@@ -1,5 +1,9 @@
-# Jogo_de_fases
+JOGO_DE_FASES
 PROJETO DE PROGRAMAÇÃO - MENU
+- DESENVOLVIDO POR: 
+- Leonardo Arero
+- Geovanny Miranda
+- Gabriel Tsuchiya
 
 
 #include <iostream>
