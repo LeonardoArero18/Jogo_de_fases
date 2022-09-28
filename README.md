@@ -1,3 +1,10 @@
+JOGO RPG - PROJETO DE PROGAMAÇÃO 
+- DESENVOLVIDO POR:
+- Geovanny Miranda
+- Leonardo Arero
+- Gabriel Logan
+
+
 #include <iostream>
 #include <string>
 
