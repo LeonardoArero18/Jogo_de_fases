@@ -5,14 +5,46 @@ using namespace std;
 
 void primeira_fase();
 int segunda_fase();
+int menu_principal();
+void tutorial(); 
 
 int main() {
-
-//primeira_fase();
+  int enqt = 0;
+  int opcao;
+  int beta;
+  while(enqt ==0){ 
+  opcao = menu_principal();
+if(opcao ==1){ 
+  primeira_fase();
   segunda_fase();
+  if(segunda_fase() == 2){
+    cout << "IHHHHH, TU EH HORRIVEL, VAI FARMAR!!!!";
+  }else if(segunda_fase() ==1){
+    cout << "PARABENS GANHOU!!!";
+  }
+  }else if(opcao == 2){
+    tutorial();
+  }else if(opcao ==3){
+  cout << "OBRIGADO POR TER JOGADO COM A GENTE!!!";
+  enqt = 1;
+  }
+  }
   }
 
+void tutorial(){
+  string opcoes = " \n W: O jogador movimenta uma unidade para cima\n A: O jogador movimenta uma unidade para esquerda \n S: O jogador movimenta uma unidade para baixo\n D: O jogador movimenta uma unidade para direita \n I: O jogador interage com o objeto que ele estar em cima \n";
+  cout << opcoes;
+}
 
+int menu_principal(){
+  int a;
+  
+  cout<< "escolha uma opcao\n";
+  cout << "1- jogar \n 2- tutorial \n 3- sair";
+  cin >> a;
+  
+  return a;
+}
 
 
 void primeira_fase(){
@@ -88,14 +120,7 @@ for(int i = 0; i < 25; i++){
     cout << "\033[2J\033[0;0H";
     
   
-  for(int i = 0; i < 25; i++){
-    for(int j = 0; j < 25; j++){
-      
-   cout<< matriz1[i][j];
-      if(j==24){
-        cout<< "\n"; }
-      }
-    }
+  
     if(opcao == 'w'){
 
         if(matriz1[i-1][j]=='*'){
@@ -210,6 +235,14 @@ for(int i = 0; i < 25; i++){
             cout << "opcao invalida";
 
     }
+    for(int i = 0; i < 25; i++){
+    for(int j = 0; j < 25; j++){
+      
+   cout<< matriz1[i][j];
+      if(j==24){
+        cout<< "\n"; }
+      }
+    }
   }
          
   }
@@ -219,6 +252,7 @@ for(int i = 0; i < 25; i++){
 
 
   int segunda_fase(){
+    
     cout<<"\n";
     char posicao = '&';
     char botao = 'O';
@@ -297,7 +331,7 @@ for(int i = 0; i < 25; i++){
         matriz[2][48]= porta_fechada;
         matriz[31][48]= chave;
 
-        
+        matriz[33][48] =  botao;
         matriz[30][2] = espinho;
         matriz[30][3] = espinho;
         matriz[30][8] = espinho;
@@ -328,7 +362,7 @@ int saida = 0;
     while(saida == 0){
       cout << " digite";
       cin >> opcao;
-      
+      cout << "\033[2J\033[0;0H";
       if(opcao == 'w'){
               cout << "entrou no W\n";
             if(matriz[i-1][j]==' '){
@@ -348,7 +382,8 @@ int saida = 0;
               cin >> interacao;
               if(interacao == 'i'){
                 cout << " porta aberta";
-                porta_fechada = porta_aberta;
+                
+                matriz[2][48] =  porta_aberta;
               }
         
               
@@ -358,6 +393,13 @@ int saida = 0;
               return 1;
             }else if (matriz[i-1][j]=='D'){
               
+            } else if(matriz[i-1][j] == 'O'){
+              char enqt='i';
+              while(enqt == 'i'){
+                cout << "digite\n i - para interagir\n p - para continuar \n ";
+                cin >> enqt;
+                
+              }
             }
   
       }else if( opcao == 's'){
@@ -378,7 +420,7 @@ int saida = 0;
               
               if(interacao == 'i'){
                 cout << " porta aberta";
-                porta_fechada = porta_aberta;
+                matriz[2][48] =  porta_aberta;
                 }
               
             }else if (matriz[i+1][j]=='='){
@@ -387,6 +429,13 @@ int saida = 0;
               
             }else if (matriz[i+1][j]=='D'){
               
+            }else if(matriz[i-1][j] == 'O'){
+              char enqt='i';
+              while(enqt == 'i'){
+                cout << "digite\n i - para interagir\n p - para continuar \n ";
+                cin >> enqt;
+                
+              }
             }
       }else if( opcao == 'a'){
         
@@ -405,14 +454,21 @@ int saida = 0;
               cin >> interacao;
               if(interacao == 'i'){
                 cout << " porta aberta";
-                porta_fechada = porta_aberta;
+               matriz[2][48] =  porta_aberta;
                 }
             }else if (matriz[i][j-1]=='='){
                cout<< "voce econtrou a saida";
               saida = 1;
-              return 1;
+              
             }else if (matriz[i][j-1]=='D'){
               
+            }else if(matriz[i-1][j] == 'O'){
+              char enqt='i';
+              while(enqt == 'i'){
+                cout << "digite\n i - para interagir\n p - para continuar \n ";
+                cin >> enqt;
+                
+              }
             }
       }else if( opcao == 'd'){
         
@@ -431,7 +487,7 @@ int saida = 0;
               cin >> interacao;
               if(interacao == 'i'){
                 cout << " porta aberta";
-                porta_fechada = porta_aberta;
+                matriz[2][48] =  porta_aberta;
                 }
             }else if (matriz[i][j+1]=='='){
                cout<< "voce econtrou a saida";
@@ -439,6 +495,13 @@ int saida = 0;
               
             }else if (matriz[i][j+1]=='D'){
               
+            }else if(matriz[i-1][j] == 'O'){
+              char enqt='i';
+              while(enqt == 'i'){
+                cout << "digite\n i - para interagir\n p - para continuar \n ";
+                cin >> enqt;
+                
+              }
             }
         
       }
